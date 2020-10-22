@@ -1,18 +1,21 @@
-function h=veloViewer2(array,array2,voxelDim,cmap)
+function h=veloViewer(array,array2,voxelDim,cmap)
 % arrayviewer - arrayviewer for looking at 3d or 4d date in gui
 % array = magnitude
 % array2 - phase
 %
 %      usage: [  ] = veloViewer(array,array2,tr,cmap)
 %         by: jonas larsson
-%       date: 2009-07-02
-%        $Id: arrayviewer.m 830 2011-05-31 07:42:16Z lpzjb $:
-%     inputs: array, cmap
+%        mod: alex beckett
+%       date: 2015-07-02
+%        $Id: veloViewer.m 
+%     inputs: array, array2, voxelDim, cmap
 %    outputs: h (figure handle)
 %
-%    purpose: program written by jonas larsson to have a quick look at
+%    purpose: program originally written by jonas larsson to have a quick look at
 %    3d/4d data without having to load things into complicated
 %    programs.
+%
+%    modified by alex beckett to quickly observe mag/phase data from PC imaging
 %
 %        e.g: arrayviewer(rand(20,30,40,50), jet)
 %
