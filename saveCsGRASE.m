@@ -2,6 +2,12 @@ function saveCsGRASE(stem,voxSize,qflag,zflag,pflag)
 % function to convert recon'd GRASE data in .mat format into .nii for
 % further processing
 % requires MATLAB Nifti toolbox (https://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image)
+% requires mrTools (https://gru.stanford.edu/doku.php/mrtools/download)
+% stem = stem of the files you with to convert (e.g. 'MID*')
+% voxSize = 4 element array of voxel size in [mm mm mm sec]
+% qflag = flag to create a qform, required for mrTools but causes issues for FSL
+% zflag = flip image in partition phase encode direction during creation
+% plag = flip image in inplane phase encode direction during creation
 
 if nargin<1 || isempty(stem)
     stem='*.mat';
@@ -32,8 +38,6 @@ for i=1:length(d)
     load(d(i).name)
     s=whos('img*');
     tmp=eval(s.name);
-    %tmp = (permute(tmp(:,:,end:-1:1,1:end),[2 1 3 4]));
-    %tmp = tmp(:,[2:end,1],[end,1:end-1],:);
     tmp = (permute(tmp(:,:,:,:),[2 1 3 4])); %used to have to flip in slice di, now we flip in short PE dir
     if pflag
         %flip slice axis if needed
