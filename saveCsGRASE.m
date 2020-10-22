@@ -1,6 +1,7 @@
 function saveCsGRASE(stem,voxSize,qflag,zflag,pflag)
 % function to convert recon'd GRASE data in .mat format into .nii for
 % further processing
+% requires MATLAB Nifti toolbox (https://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image)
 
 if nargin<1 || isempty(stem)
     stem='*.mat';
@@ -26,8 +27,6 @@ if nargin<4
     pflag=1;
 end
 
-addpath(genpath('~/matlab/NIFTI_20121012/'))
-!sudo chmod -R 777 .
 d=dir(stem);
 for i=1:length(d)
     load(d(i).name)
