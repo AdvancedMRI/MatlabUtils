@@ -2,6 +2,7 @@ function [x_1,x_2,x] = nii4ensight(stem,scale,shift)
 % convert .mat file into a nifti file for use with ensight
 % import nii file to ensight, e.g. edit ensight_template or other saved ensight context to point
 % to nii file
+% alex beckett, 2020
 
 x_1 = [];
 x_2 = [];
